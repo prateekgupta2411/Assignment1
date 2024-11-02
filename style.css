@@ -3,20 +3,22 @@ body {
   background-color: lightgray;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-/* Navigation Bar */
 .navbar {
   display: flex;
-  align-items: center;
-  padding: 1rem 10rem;
+  align-items: self-start;
+  padding: 0rem 5rem;
   background-color: white;
   flex-wrap: wrap;
+  justify-content: unset;
 }
 
 .navbar-brand img {
   width: 70px;
   height: 40px;
+  padding-top: 5px;
 }
 
 .navbar-links {
@@ -25,9 +27,17 @@ body {
   margin-left: 1rem;
   padding: 0;
 }
+.navbar-links a {
+  color: #666;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s, border-bottom 0.3s;
+}
 
-.navbar-links li {
-  margin-left: 1.5rem;
+.navbar-links a:hover {
+  color: black;
+  border-bottom: 3px solid purple;
 }
 
 .navbar-links a {
@@ -56,37 +66,79 @@ body {
 /* Main Section */
 .main-section {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  width: 90%;
+  margin-inline: auto;
   background-color: white;
-  padding: 20px;
+}
+
+.main-section .headline {
+  flex: 1;
+  padding: 10px;
 }
 
 .main-section .headline h2 {
-  font-size: 24px;
+  font-size: 26px;
   color: black;
+  margin: -60px 0 40px;
 }
 
 .main-section .headline p {
-  color: #666;
+  font-size: 1rem;
+  color: black;
+}
+
+.main-image {
+  flex: 1;
+  text-align: right;
 }
 
 .main-image img {
-  width: 60%;
+  width: 80%;
   height: auto;
+  max-width: 250px;
 }
 
 /* Popular Blogs Section */
 .popular-blogs {
-  padding: 20px 10rem;
-  background-color: white;
+  padding: 20px 1rem;
   text-align: center;
+  margin: auto;
+  width: 90%;
+}
+
+.section-info {
+  display: flex;
+  gap: 6px;
+}
+
+.section-info h4 {
+  position: relative;
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+.section-info h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: purple;
+  transition: width 0.3s ease-in-out;
+}
+
+.section-info h4:hover::after {
+  width: 100%;
 }
 
 .popular-blogs h4 {
-  font-size: 28px;
+  font-size: 20px;
   text-align: justify;
+  margin: 0;
 }
 
 .blog-grid {
@@ -98,10 +150,10 @@ body {
 
 .blog-card {
   background-color: white;
-  padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: left;
+  transition: transform 0.2s;
 }
 
 .blog-card img {
@@ -111,7 +163,7 @@ body {
 }
 
 .blog-card h4 {
-  font-size: 18px;
+  font-size: 14px;
   color: black;
   margin: 10px 0 5px;
 }
@@ -120,6 +172,11 @@ body {
   color: #666;
   font-size: 0.9rem;
 }
+
+.blog-info {
+  padding: 10px;
+}
+
 .blog-read-more {
   display: flex;
   justify-content: space-between;
@@ -137,7 +194,9 @@ body {
 .cta-section {
   display: flex;
   background-color: #e6d9f6;
-  padding: 20px 10rem;
+  margin: auto;
+  width: 90%;
+  border-radius: 25px;
 }
 
 .cta-section img {
@@ -149,8 +208,8 @@ body {
 }
 
 .cta-content h4 {
-  font-size: 24px;
-  margin-bottom: 0px;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 
 .cta-content button {
@@ -159,7 +218,7 @@ body {
   border-color: purple;
   border-width: 2px;
   border-radius: 25px;
-  padding: 10px 20px;
+  padding: 10px 16px;
   font-size: 1rem;
   cursor: pointer;
   margin-top: 10px;
@@ -168,32 +227,44 @@ body {
 /* Responsive Styling */
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     flex-direction: column;
-    align-items: self-start;
+    align-items: flex-start;
   }
 
   .navbar-links {
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
-  }
-
-  .navbar-links li {
-    margin: 5px 0;
+    gap: 10px;
   }
 
   .main-section {
     flex-direction: column;
     text-align: center;
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .main-section .headline h2 {
+    font-size: 24px;
+    margin: 46px 100px 56px -14px;
+  }
+
+  .main-section .headline p {
+    font-size: 18px;
+    color: black;
+    margin: 46px 88px 56px -60px;
   }
 
   .main-image img {
     width: 80%;
+    display: none;
   }
 
   .popular-blogs {
-    padding: 20px 2rem;
+    padding: 20px 1rem;
+    width: 90%;
   }
 
   .blog-grid {
@@ -202,13 +273,13 @@ body {
 
   .cta-section {
     flex-direction: column;
-    padding: 20px 2rem;
     text-align: center;
+    width: 90%;
+    margin-bottom: 10px;
   }
 
   .cta-section img {
     width: 100%;
-    border-radius: 25px;
     margin-bottom: 10px;
   }
 }
